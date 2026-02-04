@@ -1,5 +1,4 @@
-import TopSection from './TopSection.jsx';
-import BottomSection from "./BottomSection.jsx";
+import CardsSection from './CardsSection.jsx';
 
 const HomePage = () => (
         <div className="home-page">
@@ -10,8 +9,8 @@ const HomePage = () => (
                 </header>
                 <div className="container">
                     <main className="home-page__content">
-                        <TopSection/>
-                        <BottomSection/>
+                        <CardsSection className='cards cards--top'/>
+                        <CardsSection className='cards cards--bottom'/>
                     </main>
                     <aside className="home-page__sidebar">
                         <header className="home-page__aside-header">
