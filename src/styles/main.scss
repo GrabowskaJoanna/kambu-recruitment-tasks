@@ -33,7 +33,7 @@ html, body, #root {
   &__header {
     background-color: $primary-color;
     width: 100%;
-    color: $text-color;
+    color: $text-color-light;
     margin-bottom: 15px;
   }
 
@@ -65,6 +65,24 @@ html, body, #root {
           height: 159px;
           display: block;
           background-color: $placeholder-color;
+          position: relative;
+          cursor: pointer;
+
+            &::after {
+              content: '';
+              width: 140px;
+              height: 140px;
+              background-color: $hover-color;
+              position: absolute;
+              top: 10px;
+              left: 10px;
+              opacity: 0;
+              transition: opacity 2s;
+            }
+
+          &:hover::after {
+            opacity: 1;
+          }
         }
 
         &--title {
@@ -92,17 +110,58 @@ html, body, #root {
     }
   }
   .home-page__sidebar {
-   flex: 0 0 25%;
-   background-color: $sidebar-color;
-   border-radius: 8px;
-   text-align: left;
-   padding-left: 30px;
+    flex: 0 0 25%;
+    background-color: $sidebar-color;
+    border-radius: 8px;
+    text-align: left;
+    padding: 30px;
+
+    h2 {
+      margin: 0;
+    }
+
+    &-list {
+     list-style: none;
+      padding: 20px;
+      margin: 0;
+    }
+    &-item {
+      counter-increment: sidebar-item;
+      position: relative;
+      padding-left: 20px;
+      margin-bottom: 12px;
+
+      &::before {
+        content: counter(sidebar-item);
+        position: absolute;
+        left: -20px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: $element-color;
+        background-color: $inactive-link-color;
+        border-radius: 50%;
+        width: 26px;
+        height: 26px;
+        text-align: center;
+        line-height: 26px;
+      }
+
+      &--active::before {
+        background-color: $primary-color;
+        color: $text-color-light;
+      }
+
+    }
+
+    &-link {
+      color: black;
+    }
   }
 
   &__footer {
     margin-top: auto;
     background-color: $footer-color;
-    color: $text-color;
+    color: $text-color-light;
     padding: 10px;
   }
 }
