@@ -1,4 +1,5 @@
 import CardsSection from './CardsSection.jsx';
+import List from "./List.jsx";
 
 const HomePage = () => (
         <div className="home-page">
@@ -13,9 +14,10 @@ const HomePage = () => (
                         <CardsSection className='cards cards--bottom'/>
                     </main>
                     <aside className="home-page__sidebar">
-                        <header className="home-page__aside-header">
+                        <header className="home-page__sidebar-header">
                             <h2>Headline 2</h2>
                         </header>
+                        <List/>
                     </aside>
                 </div>
                 <footer className="home-page__footer">
