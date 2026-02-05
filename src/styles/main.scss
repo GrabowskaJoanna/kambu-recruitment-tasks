@@ -1,6 +1,7 @@
 @use './mixins';
 @import 'normalize.css';
 @import './variables';
+@import './buttons';
 
 *,
 *::before,
@@ -33,9 +34,23 @@ html, body, #root {
   display: flex;
   flex-direction: column;
 
+  &__header {
+
+    .container {
+      display: flex;
+      justify-content: space-between;
+      padding-top: 30px;
+    }
+
+    h1 {
+      text-align: left;
+      margin: 0;
+    }
+  }
+
   .container {
     width: 1140px;
-    margin: 0 auto;
+    margin: 0 auto 30px auto;
     display: flex;
     gap: 30px;
 
@@ -47,22 +62,45 @@ html, body, #root {
 
     @include mixins.md {
       width: 600px;
-      overflow: scroll;
     }
 
     @include mixins.sm {
       width: 350px;
     }
 
-    h1 {
-      text-align: left;
+  }
+  &__text-section {
+    text-align: left;
+
+    &.container{
+      flex-direction: column;
+      gap: 0;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+
+    &--header {
+      margin: 0;
+    }
+
+    &--text {
+      font-size: 14px;
+      line-height: 1;
+      margin: 0;
+      padding-bottom: 20px;
+      padding-top: 5px;
+    }
+
+    &--buttons {
+      display: flex;
+      gap: 20px;
     }
   }
 
   &__header {
     background-color: $primary-color;
     width: 100%;
-    color: $text-color-light;
+    color: $neutral-color;
     margin-bottom: 15px;
 
     @include mixins.sm {
@@ -76,7 +114,7 @@ html, body, #root {
     display: flex;
     flex-direction: column;
     flex: 0 0 75%;
-    gap: 30px;
+    gap: 20px;
 
     @include mixins.lg {
       gap: 20px;
@@ -133,19 +171,14 @@ html, body, #root {
 
             &::after {
               content: '';
-              width: 80%;
-              height: 80%;
+              width: 90%;
+              height: 90%;
               background-color: $hover-color;
               position: absolute;
-              top: 16px;
-              left: 16px;
+              top: 8px;
+              left: 8px;
               opacity: 0;
               transition: opacity 2s;
-
-              @include mixins.sm {
-                top: 16px;
-                left: 16px;
-              }
             }
 
           &:hover::after {
@@ -171,9 +204,12 @@ html, body, #root {
 
     &--header {
       text-align: left;
+      display: flex;
+      justify-content: space-between;
+      padding: 20px 0;
 
       h2 {
-        margin-top: 0;
+        margin: 0;
       }
     }
   }
@@ -192,7 +228,7 @@ html, body, #root {
       margin: 0;
     }
 
-    &-list {
+    &--list {
      list-style: none;
       padding: 20px;
       margin: 0;
@@ -208,7 +244,7 @@ html, body, #root {
       }
 
     }
-    &-item {
+    &--item {
       counter-increment: sidebar-item;
       position: relative;
       padding-left: 20px;
@@ -231,24 +267,72 @@ html, body, #root {
 
       &--active::before {
         background-color: $primary-color;
-        color: $text-color-light;
+        color: $neutral-color;
       }
 
     }
 
-    &-link {
+    &--link {
       color: black;
     }
   }
 
   &__footer {
     margin-top: auto;
-    background-color: $footer-color;
-    color: $text-color-light;
-    padding: 10px;
+    background-color: $secondary-color;
+    color: $neutral-color;
+
+    .container {
+      margin: 0 auto;
+    }
 
     @include mixins.lg {
       text-align: left;
+    }
+  }
+}
+
+//dark mode
+
+body.dark {
+  .home-page {
+    background-color: $background-color-dark-mode;
+    color: $neutral-color;
+
+    &__header {
+      background-color: $header-color-dark-mode;
+    }
+
+    &__section {
+      background-color: $section-color-dark-mode;
+
+      .cards__item--picture {
+        background-color: $placeholder-color-dark-mode;
+      }
+    }
+
+    &__sidebar {
+      background-color: $section-color-dark-mode;
+
+      &--item {
+        &::before {
+          background-color: $element-color-dark-mode;
+          color: $neutral-color;
+        }
+
+        &--active::before {
+          background-color: $neutral-color;
+          color: $element-color-dark-mode;
+        }
+      }
+
+      &--link {
+        color: $neutral-color;
+      }
+    }
+
+    &__footer {
+      background-color: $header-color-dark-mode;
     }
   }
 }
