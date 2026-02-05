@@ -1,4 +1,5 @@
 import Card from './Card.jsx';
+import Button from './Button.jsx';
 
 const CardsSection = ({
                      className
@@ -6,6 +7,11 @@ const CardsSection = ({
     <section className="home-page__section">
         <header className="home-page__section--header">
             <h2>Headline 2</h2>
+            <Button
+                type="button"
+                text="Button secondary"
+                className="button button--secondary"
+            />
         </header>
         <div className={className}>
             <Card title="Headline 3" text="paragraph"/>

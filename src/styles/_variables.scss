@@ -1,10 +1,46 @@
 $primary-color: #2727a3;
 $element-color: #A5AFF9FF;
-$text-color-light: #fdfdfd;
+$neutral-color: #fdfdfd;
 $text-color-dark: #213546;
 $section-color: #f5f5f5;
 $sidebar-color: #f7f7f7;
 $placeholder-color: #e2e2e2;
-$footer-color: #101626;
+$secondary-color: #101626;
 $inactive-link-color: #eae9f3;
 $hover-color: rgba(0,0,0,0.1);
+
+
+$background-color-dark-mode: #303030;
+$header-color-dark-mode: #202020;
+$section-color-dark-mode: #414141;
+$placeholder-color-dark-mode: #9b9b9b;
+$element-color-dark-mode: #515152;
+
+$buttons: (
+  primary: (
+    background: $primary-color,
+    color: $neutral-color,
+    border: 1px solid $primary-color,
+  ),
+  secondary: (
+    background: $secondary-color,
+    color: $neutral-color,
+    border: 1px solid $secondary-color,
+  ),
+  neutral: (
+    background: $neutral-color,
+    color: $secondary-color,
+    border: 1px solid $secondary-color,
+  )
+);
+
+$buttons-dark: (
+        neutral: (
+          background: $background-color-dark-mode,
+          color: $neutral-color,
+          border: 1px solid $neutral-color,
+        )
+);
+
+
+
