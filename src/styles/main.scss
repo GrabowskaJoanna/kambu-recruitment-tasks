@@ -1,3 +1,4 @@
+@use './mixins';
 @import 'normalize.css';
 @import './variables';
 
@@ -5,6 +6,19 @@
 *::before,
 *::after {
   box-sizing: border-box;
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.fade-in-animation {
+  animation: 1.5s fade-in;
 }
 
 html, body, #root {
@@ -25,6 +39,21 @@ html, body, #root {
     display: flex;
     gap: 30px;
 
+    @include mixins.lg {
+      width: 800px;
+      flex-direction: column-reverse;
+      gap: 20px;
+    }
+
+    @include mixins.md {
+      width: 600px;
+      overflow: scroll;
+    }
+
+    @include mixins.sm {
+      width: 350px;
+    }
+
     h1 {
       text-align: left;
     }
@@ -35,6 +64,12 @@ html, body, #root {
     width: 100%;
     color: $text-color-light;
     margin-bottom: 15px;
+
+    @include mixins.sm {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
   }
 
   &__content {
@@ -43,23 +78,46 @@ html, body, #root {
     flex: 0 0 75%;
     gap: 30px;
 
+    @include mixins.lg {
+      gap: 20px;
+      margin-bottom: 20px;
+    }
+
     .cards {
       display: flex;
       gap: 30px;
 
+      @include mixins.sm {
+        flex-direction: column;
+        gap: 30px;
+      }
+
       &--top {
         justify-content: space-between;
+
+        @include mixins.md {
+          justify-content: space-around;
+        }
+
       }
 
       &--bottom {
         .cards__item:last-child {
           margin-left: auto;
+
+          @include mixins.sm {
+            margin: 0;
+          }
         }
       }
 
       .cards__item {
         flex: 0 0 20%;
         text-align: left;
+
+        @include mixins.md {
+         flex: 0 0 30%;
+        }
 
         &--picture {
           height: 159px;
@@ -68,16 +126,26 @@ html, body, #root {
           position: relative;
           cursor: pointer;
 
+          @include mixins.sm {
+            width: 60%;
+          }
+
+
             &::after {
               content: '';
-              width: 140px;
-              height: 140px;
+              width: 80%;
+              height: 80%;
               background-color: $hover-color;
               position: absolute;
-              top: 10px;
-              left: 10px;
+              top: 16px;
+              left: 16px;
               opacity: 0;
               transition: opacity 2s;
+
+              @include mixins.sm {
+                top: 16px;
+                left: 16px;
+              }
             }
 
           &:hover::after {
@@ -116,6 +184,10 @@ html, body, #root {
     text-align: left;
     padding: 30px;
 
+    @include mixins.lg {
+      padding: 20px 20px 0 20px;
+    }
+
     h2 {
       margin: 0;
     }
@@ -124,6 +196,17 @@ html, body, #root {
      list-style: none;
       padding: 20px;
       margin: 0;
+
+      @include mixins.lg {
+        display: flex;
+        gap: 40px;
+      }
+
+      @include mixins.sm {
+        flex-direction: column;
+        gap: 0;
+      }
+
     }
     &-item {
       counter-increment: sidebar-item;
@@ -163,5 +246,9 @@ html, body, #root {
     background-color: $footer-color;
     color: $text-color-light;
     padding: 10px;
+
+    @include mixins.lg {
+      text-align: left;
+    }
   }
 }
